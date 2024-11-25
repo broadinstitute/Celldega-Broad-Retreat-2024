@@ -32,14 +32,14 @@ a:hover {
   text-decoration: underline;
 }
 
-#celldega-container {
-  height: 80%;
+.celldega-container {
+  height: 77%;
   width: 90%; /* Set the width explicitly */
   margin: auto; /* Center the container */
   overflow: hidden; /* Prevent overflow */
   position: relative; /* Maintain proper positioning */
   line-height: 10px;
-  margin-top: 5%;
+  margin-top: 0em;
 }
 
 .deck-tooltip {
@@ -57,12 +57,19 @@ a:hover {
   <p class="grey">Scroll down to continue.
 </section>
 
-<section id='celldega-slide'>
+<section >
 
-  <!-- <div id='celldega' style="height:600px; margin-bottom: 50px; overflow: hidden"> -->
-  <div id='celldega-container'>
-    <!-- here -->
-  </div>
+  <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Prime Mouse Brain Coronal FF </p>
+
+  <div class='celldega-container' id='celldega-mouse-brain'></div>
+
+</section>
+
+<section>
+
+  <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Pancreas </p>
+
+  <div class='celldega-container' id='celldega-pancreas'></div>
 
 </section>
 
@@ -125,38 +132,53 @@ function deactivate(d, i) {
 }
 
 
-// celldega code
-const ini_x = 20000
-const ini_y = 15000
+// celldega mouse brain
+//////////////////////////////////
 const ini_z = 0
-const ini_zoom = -5.5
 const token = ''
 
-const dataset_name = 'Xenium_Prime_Mouse_Brain_Coronal_FF_outs'
-const repo_name = 'celldega_' + dataset_name
-const base_url = 'https://raw.githubusercontent.com/broadinstitute/' + repo_name + '/main/' + dataset_name
-
-console.log('base_url', base_url);
-
-// const celldega_container = d3.select("#celldega")
-const celldega_container = d3.select("#celldega-container").node();
-
-console.log('celldega_container', celldega_container);
+const base_url_mouse_brain = 'https://raw.githubusercontent.com/broadinstitute/celldega_Xenium_Prime_Mouse_Brain_Coronal_FF_outs/main/Xenium_Prime_Mouse_Brain_Coronal_FF_outs'
+let ini_x = 20000
+let ini_y = 15000
+let ini_zoom = -5.5
 
 celldega.landscape_ist(
-    celldega_container,
+  d3.select("#celldega-mouse-brain").node(),
     {},
     token,
     ini_x,
     ini_y,
     ini_z,
     ini_zoom,
-    base_url,
+    base_url_mouse_brain,
     '',
     0.25,
     '100%',
     '100%'
   )
 
+
+  // celldega pancreas
+  //////////////////////////////////
+  const base_url_pancreas = 'https://raw.githubusercontent.com/broadinstitute/celldega_Xenium_human_Pancreas_FFPE/main/Landscape_Xenium_V1_human_Pancreas_FFPE_outs_webp'
+
+  ini_x = 20000
+  ini_y = 15000
+  ini_zoom = -5.5
+
+  celldega.landscape_ist(
+    d3.select("#celldega-pancreas").node(),
+      {},
+      token,
+      ini_x,
+      ini_y,
+      ini_z,
+      ini_zoom,
+      base_url_pancreas,
+      '',
+      0.25,
+      '100%',
+      '100%'
+    )
 
 </script>

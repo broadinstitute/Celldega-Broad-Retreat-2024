@@ -6,9 +6,11 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
 
 section {
-  background: #000;
-  color: #fff;
-  padding: 2em;
+  /* background: #000;
+  color: #fff; */
+  background: #fff;
+  color: #000;
+  /* padding: 2em; */
   font-family: "PT Serif", Baskerville, Georgia;
 }
 
@@ -32,18 +34,20 @@ a:hover {
 
 </style>
 
-<section id='celldega', style="text-align:center;">
-
-<div style="height:600px; margin-bottom: 50px; overflow: hidden">
-  <!-- here -->
-</div>
-
-</section>
-
 <section style="text-align:center;padding-top:5em;">
   <p style="font-size:120%;"><b><a href="https://github.com/mbostock/stack">Stack</a></b> is a presentation library<br> with simple, scroll-based navigation.
   <p class="grey">Scroll down to continue.
 </section>
+
+<section id='celldega-slide'>
+
+  <!-- <div id='celldega' style="height:600px; margin-bottom: 50px; overflow: hidden"> -->
+  <div id='celldega-container' style="height:600px; margin-bottom: 50px; overflow: hidden">
+    <!-- here -->
+  </div>
+
+</section>
+
 
 <section style="padding:5em 9em;">
   <p>In addition to the mouse,
@@ -58,47 +62,6 @@ a:hover {
   <p>You can even grab the scroll bar!
 </section>
 
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-
-
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  8
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  7
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  6
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  5
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  4
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  3
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  2
-</section>
-
-<section style="text-align:center;padding:.35em;font-size:1000%;">
-  1
-</section>
-
-<section id="follow" style="padding-top:5em;background:url(sky.jpg);background-size:cover;">
-  <p style="text-align:center;color:#000;font-size:200%;line-height:1.35em;">INSPIRATIONAL IMAGE<br>ACCOMPANIED BY<br>INSIGHTFUL COMMENTARY
-  <p id="follow-anchor" style="position:fixed;text-indent:-1.25em;">&larr; When this bar reaches the top,<br>the next slide will fade in.
-</section>
 
 <section style="text-align:center;padding-top:5em;">
   <p>If you resize the window,
@@ -106,12 +69,6 @@ a:hover {
     <br>to fit automatically.
 </section>
 
-<!-- <section id="lorenz" style="text-align:center;padding-top:0;">
-  <canvas></canvas>
-  <p style="position:absolute;z-index:1;padding-top:5em;left:0;width:100%;text-shadow:0 1px 0 #000;">Use <i>activate</i> and <i>deactivate</i> events
-    <br>to enable complex animations
-    <br>only when visible.
-</section> -->
 
 <section style="padding:5em 13em;">
   <p>Stack is made by <a href="http://bost.ocks.org/mike/" rel="author">Mike Bostock</a>
@@ -122,47 +79,12 @@ a:hover {
 
 <script src="d3.v3.min.js"></script>
 <script src="stack.v1.min.js"></script>
-<!-- <script src="widget.js"></script> -->
-<!-- <script src="https://unpkg.com/celldega@0.3.0/src/celldega/static/widget.js?module"></script> -->
-
-<!-- <script type="module">
-  import celldega from 'https://unpkg.com/celldega@0.3.0/src/celldega/static/widget.js?module';
-
-  console.log('celldega', celldega);
-
-  // // Define your variables
-  // const root = document.getElementById('visualization');
-  // const token = 'your-token-here';
-  // const ini_x = 0;
-  // const ini_y = 0;
-  // const ini_z = 0;
-  // const ini_zoom = 1;
-  // const base_url = 'your-base-url-here';
-
-  // // Call the landscape_ist function
-  // celldega.default.landscape_ist(
-  //   root,
-  //   {},
-  //   token,
-  //   ini_x,
-  //   ini_y,
-  //   ini_z,
-  //   ini_zoom,
-  //   base_url,
-  //   '',
-  //   0.25
-  // );
-</script> -->
-
 
 
 <script type="module">
 
-import celldega from 'https://unpkg.com/celldega@0.3.0/src/celldega/static/widget.js?module';
+import celldega from 'https://unpkg.com/celldega@0.4.3/src/celldega/static/widget.js?module';
 
-console.log('celldega', celldega);
-
-// console.log('celldega', celldega);
 
 var mystack = stack()
     .on("activate", activate)
@@ -170,10 +92,7 @@ var mystack = stack()
 
 var section = d3.selectAll("section"),
     follow = d3.select("#follow"),
-    followAnchor = d3.select("#follow-anchor"),
-    lorenz = d3.select("#lorenz"),
-    followIndex = section[0].indexOf(follow.node()),
-    lorenzIndex = section[0].indexOf(lorenz.node());
+    followIndex = section[0].indexOf(follow.node());
 
 function refollow() {
   followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
@@ -181,17 +100,14 @@ function refollow() {
 
 function activate(d, i) {
   if (i === followIndex) mystack.on("scroll.follow", refollow);
-  if (i === lorenzIndex) startLorenz();
 }
 
 function deactivate(d, i) {
   if (i === followIndex) mystack.on("scroll.follow", null);
-  if (i === lorenzIndex) stopLorenz();
 }
 
 
 // celldega code
-const inst_height = 650
 const ini_x = 20000
 const ini_y = 15000
 const ini_z = 0
@@ -204,71 +120,25 @@ const base_url = 'https://raw.githubusercontent.com/broadinstitute/' + repo_name
 
 console.log('base_url', base_url);
 
-const celldega_container = d3.select("#celldega")
+// const celldega_container = d3.select("#celldega")
+const celldega_container = d3.select("#celldega-container").node();
 
 console.log('celldega_container', celldega_container);
 
-// var lorenzInterval;
+celldega.landscape_ist(
+    celldega_container,
+    {},
+    token,
+    ini_x,
+    ini_y,
+    ini_z,
+    ini_zoom,
+    base_url,
+    '',
+    0.25,
+    '100%',
+    '100%'
+  )
 
-// function startLorenz() {
-//   var δτ = 0.003,
-//       ρ = 28,
-//       σ = 10,
-//       β = 8 / 3,
-//       x = .5,
-//       y = .5,
-//       z = 10,
-//       n = 30;
-
-//   var width = 1280,
-//       height = 720;
-
-//   var canvas = d3.select("canvas")
-//       .style("position", "absolute")
-//       .style("top", 0)
-//       .style("left", 0)
-//       .style("width", "100%")
-//       .style("height", "100%")
-//       .attr("width", width)
-//       .attr("height", height);
-
-//   var color = d3.scale.linear()
-//       .domain([0, 20, 30, 50])
-//       .range(["yellow", "orange", "brown", "purple"])
-//       .interpolate(d3.interpolateHcl);
-
-//   var context = canvas.node().getContext("2d");
-
-//   context.lineWidth = .2;
-//   context.fillStyle = "rgba(0,0,0,.03)";
-
-//   d3.timer(function() {
-//     context.save();
-//     context.globalCompositeOperation = "lighter";
-//     context.translate(width / 2, height / 2);
-//     context.scale(12, 14);
-//     context.rotate(30);
-//     for (var i = 0; i < n; ++i) {
-//       context.strokeStyle = color(z);
-//       context.beginPath();
-//       context.moveTo(x, y);
-//       x += δτ * σ * (y - x);
-//       y += δτ * (x * (ρ - z) - y);
-//       z += δτ * (x * y - β * z);
-//       context.lineTo(x, y);
-//       context.stroke();
-//     }
-//     context.restore();
-//     return !lorenzInterval;
-//   });
-
-//   lorenzInterval = setInterval(function() {
-//     context.fillRect(0, 0, width, height);
-//   }, 100);
-// }
-
-// function stopLorenz() {
-//   lorenzInterval = clearInterval(lorenzInterval);
-// }
 
 </script>

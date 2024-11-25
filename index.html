@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+
 <style>
 
 @import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
@@ -66,7 +67,7 @@ a:hover {
 
 .fleft {
   float:left;
-  width: 35%;
+  width: 30%;
   height: 77%;
   /*background:blue;*/
   margin: auto; /* Center the container */
@@ -78,7 +79,7 @@ a:hover {
 
 .fright {
   float:right;
-  width: 60%;
+  width: 65%;
   height: 77%;
   /*background:blue;*/
   margin: auto; /* Center the container */
@@ -92,10 +93,9 @@ a:hover {
   line-height: 50px;
 }
 
-
-
 </style>
 
+<!-- Slide 1 -->
 <section style="text-align:center;padding-top:5em;">
   <p style="font-size:120%; margin: 0.1em;"><b><a href="https://github.com/broadinstitute/celldega">Celldega</a></b></p>
   <br
@@ -112,6 +112,7 @@ a:hover {
   <!-- <p class="grey">Scroll down to see more.</p> -->
 </section>
 
+<!-- Slide 2 -->
 <section >
 
   <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Prime Mouse Brain Coronal FF </p>
@@ -120,6 +121,7 @@ a:hover {
 
 </section>
 
+<!-- Slide 3 -->
 <section>
 
   <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Pancreas </p>
@@ -140,11 +142,10 @@ a:hover {
     <div class='fright' id='celldega-pancreas' style="border: 1px solid #d3d3d3;"></div>
   </div>
 
-
-
 </section>
 
 
+<!-- Slide 4 -->
 <section style="padding:5em 9em;">
   <p>In addition to the mouse,
     <br>you can scroll with the keyboard:
@@ -154,11 +155,13 @@ a:hover {
   <p class="grey">Multiple key presses will skip multiple slides.
 </section>
 
+<!-- Slide 5 -->
 <section style="text-align:center;padding-top:5em;">
   <p>You can even grab the scroll bar!
 </section>
 
 
+<!-- Slide 6 -->
 <section style="text-align:center;padding-top:5em;">
   <p>If you resize the window,
     <br>slide content will scale up or down
@@ -166,6 +169,7 @@ a:hover {
 </section>
 
 
+<!-- Slide 7 -->
 <section style="padding:5em 13em;">
   <p>Stack is made by <a href="http://bost.ocks.org/mike/" rel="author">Mike Bostock</a>
     <br>and is available on <a href="https://github.com/mbostock/stack">GitHub</a>
@@ -173,9 +177,9 @@ a:hover {
   <p><a style="color:#777;text-decoration:none;" href="https://github.com/mbostock/stack">View source to get started.</a>
 </section>
 
+
 <script src="d3.v3.min.js"></script>
 <script src="stack.v1.min.js"></script>
-
 
 <script type="module">
 
@@ -183,12 +187,12 @@ import celldega from 'https://unpkg.com/celldega@0.4.3/src/celldega/static/widge
 
 
 var mystack = stack()
-    .on("activate", activate)
-    .on("deactivate", deactivate);
+  .on("activate", activate)
+  .on("deactivate", deactivate);
 
 var section = d3.selectAll("section"),
-    follow = d3.select("#follow"),
-    followIndex = section[0].indexOf(follow.node());
+  follow = d3.select("#follow"),
+  followIndex = section[0].indexOf(follow.node());
 
 function refollow() {
   followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
@@ -228,28 +232,27 @@ celldega.landscape_ist(
   '100%'
 )
 
+// celldega pancreas
+//////////////////////////////////
+const base_url_pancreas = 'https://raw.githubusercontent.com/broadinstitute/celldega_Xenium_human_Pancreas_FFPE/main/Landscape_Xenium_V1_human_Pancreas_FFPE_outs_webp'
 
-  // celldega pancreas
-  //////////////////////////////////
-  const base_url_pancreas = 'https://raw.githubusercontent.com/broadinstitute/celldega_Xenium_human_Pancreas_FFPE/main/Landscape_Xenium_V1_human_Pancreas_FFPE_outs_webp'
+ini_x = 20000
+ini_y = 15000
+ini_zoom = -5.5
 
-  ini_x = 20000
-  ini_y = 15000
-  ini_zoom = -5.5
-
-  celldega.landscape_ist(
-    d3.select("#celldega-pancreas").node(),
-    {},
-    token,
-    ini_x,
-    ini_y,
-    ini_z,
-    ini_zoom,
-    base_url_pancreas,
-    '',
-    0.25,
-    '100%',
-    '100%'
-  )
+celldega.landscape_ist(
+  d3.select("#celldega-pancreas").node(),
+  {},
+  token,
+  ini_x,
+  ini_y,
+  ini_z,
+  ini_zoom,
+  base_url_pancreas,
+  '',
+  0.25,
+  '100%',
+  '100%'
+)
 
 </script>

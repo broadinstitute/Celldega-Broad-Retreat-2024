@@ -33,8 +33,18 @@ a:hover {
 }
 
 .celldega-container {
-  height: 77%;
   width: 90%; /* Set the width explicitly */
+  height: 77%;
+  margin: auto; /* Center the container */
+  overflow: hidden; /* Prevent overflow */
+  position: relative; /* Maintain proper positioning */
+  line-height: 10px;
+  margin-top: 0em;
+}
+
+.celldega-half-container {
+  width: 50%; /* Set the width explicitly */
+  height: 77%;
   margin: auto; /* Center the container */
   overflow: hidden; /* Prevent overflow */
   position: relative; /* Maintain proper positioning */
@@ -47,6 +57,40 @@ a:hover {
   line-height: 15px;
 }
 
+.wrap {
+  margin: 1em;
+  /* width: 100%; */
+  height: 100%;
+  /* overflow:auto; */
+}
+
+.fleft {
+  float:left;
+  width: 35%;
+  height: 77%;
+  /*background:blue;*/
+  margin: auto; /* Center the container */
+  overflow: hidden; /* Prevent overflow */
+  position: relative; /* Maintain proper positioning */
+  line-height: 10px;
+  margin-top: 0em;
+}
+
+.fright {
+  float:right;
+  width: 60%;
+  height: 77%;
+  /*background:blue;*/
+  margin: auto; /* Center the container */
+  overflow: hidden; /* Prevent overflow */
+  position: relative; /* Maintain proper positioning */
+  line-height: 10px;
+  margin-top: 0em;
+}
+
+.text-box {
+  line-height: 50px;
+}
 
 
 
@@ -72,7 +116,7 @@ a:hover {
 
   <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Prime Mouse Brain Coronal FF </p>
 
-  <div class='celldega-container' id='celldega-mouse-brain'></div>
+  <div class='celldega-container' id='celldega-mouse-brain' style="border: 1px solid #d3d3d3;"></div>
 
 </section>
 
@@ -80,7 +124,23 @@ a:hover {
 
   <p style="text-align:center;padding-top:0.25em;">Celldega: Xenium Pancreas </p>
 
-  <div class='celldega-container' id='celldega-pancreas'></div>
+  <div class="wrap">
+    <div class="fleft" >
+
+      <p class="text-box">
+        Something about the pancreas.
+      </p>
+
+      <p class="text-box">
+        Something about the pancreas.
+      </p>
+
+    </div>
+
+    <div class='fright' id='celldega-pancreas' style="border: 1px solid #d3d3d3;"></div>
+  </div>
+
+
 
 </section>
 
@@ -155,18 +215,18 @@ let ini_zoom = -5.5
 
 celldega.landscape_ist(
   d3.select("#celldega-mouse-brain").node(),
-    {},
-    token,
-    ini_x,
-    ini_y,
-    ini_z,
-    ini_zoom,
-    base_url_mouse_brain,
-    '',
-    0.25,
-    '100%',
-    '100%'
-  )
+  {},
+  token,
+  ini_x,
+  ini_y,
+  ini_z,
+  ini_zoom,
+  base_url_mouse_brain,
+  '',
+  0.25,
+  '100%',
+  '100%'
+)
 
 
   // celldega pancreas
@@ -179,17 +239,17 @@ celldega.landscape_ist(
 
   celldega.landscape_ist(
     d3.select("#celldega-pancreas").node(),
-      {},
-      token,
-      ini_x,
-      ini_y,
-      ini_z,
-      ini_zoom,
-      base_url_pancreas,
-      '',
-      0.25,
-      '100%',
-      '100%'
-    )
+    {},
+    token,
+    ini_x,
+    ini_y,
+    ini_z,
+    ini_zoom,
+    base_url_pancreas,
+    '',
+    0.25,
+    '100%',
+    '100%'
+  )
 
 </script>

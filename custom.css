@@ -18,6 +18,20 @@ section {
   color: #777;
 }
 
+#title {
+  style="font-size:1.25em;
+  margin: 0.1em;
+  color: #4973CF";
+}
+
+#sub-title {
+  font-size: 0.75em;
+  font-weight: bold;
+  line-height: 1.2em;
+  margin-top: 1em;
+  /* margin-bottom: 1em; */
+}
+
 a:link,
 a:visited {
   color: orange;

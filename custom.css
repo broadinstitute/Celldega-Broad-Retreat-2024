@@ -152,3 +152,15 @@ a:hover {
   width: 50%; /* Fallback for older browsers */
   height: 100%;
 }
+
+
+.gradient-text {
+  font-weight: 900; /* Bold text */
+  /* font-size: 4rem;  */
+  display: inline-block; /* Ensure text renders correctly */
+  background: linear-gradient(30deg,  #0000FF, #000000); /* Replace with actual gradient */
+  background-clip: text; /* Clip gradient to text */
+  -webkit-background-clip: text; /* Webkit support */
+  color: transparent; /* Transparent fallback */
+  -webkit-text-fill-color: transparent; /* Webkit text transparency */
+}

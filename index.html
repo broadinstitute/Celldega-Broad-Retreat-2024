@@ -13,8 +13,6 @@
     </b>
   </p>
 
-  <!-- <br
-  <br> -->
   <!-- Spatial Analysis and Visualization Library -->
   <div class="grey" id="sub-title" style="font-size: 75%; margin-top: 5em;">
     <div>Broad Retreat 2024</div>
@@ -23,9 +21,6 @@
     <div>Nicolas Fernandez</div>
 </div>
 
-  <!-- <p class="grey"></p> -->
-
-  <!-- <p class="grey">Scroll down to see more.</p> -->
 </section>
 
 <!-- 2. Biological Motivation -->
@@ -84,6 +79,12 @@
 
       <img src="frink_high-dimensional-data.jpg" alt="First Image Description" style="width: 60%; margin-left: 3em">
       <img src="frink_spaital-data.jpg" alt="Second Image Description" style="width: 60%; margin-left: 3em">
+    </div>
+
+    <!-- Credit Section -->
+    <!-- <div class="credit-section">
+      <p>Image adapted from Simpsons and Frinkiac</p>
+    </div> -->
   </div>
 
 </section>
@@ -118,10 +119,60 @@
 <section class='main_section'>
 
   <p style="text-align:center;padding-top:0.25em;">
-    Spatial Transcriptomics
+    Acknowledgements
   </p>
 
-  <div class="text-box-left"> something </div>
+  <div class="container-normal-slide">
+
+    <div class="text-box-left" style="margin-left: 2em">
+      <div>Sami Farhi</div>
+      <div>Lindsey Erion-Barner</div>
+      <div>Michal Lipinski</div>
+      <div class="gradient-text" style="font-weight: normal">Huan Wang</div>
+      <div><div class="gradient-text" style="font-weight: normal">Jaspreet Ishar</div></div>
+      <div>Keisha Matthew</div>
+      <div>Sara Sime</div>
+      <div>Sachi Krishna</div>
+      <div>Jack Nelson</div>
+      <div>Brad Tremblay</div>
+
+    </div>
+
+    <div class="image-right">
+      <div>Tamara Aleksanyan</div>
+      <div>Gunjan Jetley</div>
+      <div>Ari Koplowitz</div>
+      <div>Loïc Binan</div>
+      <div>Vy Ngo</div>
+      <div>Jax Xu</div>
+      <div>Alec Barrios</div>
+      <div>Peter Bryan</div>
+      <div>Sartaj Habib</div>
+      <div>Byunguk Kang</div>
+      <div>Darian Ventura</div>
+    </div>
+  </div>
+
+
+  <!-- <div class="container-normal-slide"></div>
+
+    <div class="text-box-left">
+      <div>Sami Farhi</div>
+      <div>Lindsey Erion-Barner</div>
+      <div>Michal Lipinski</div>
+      <div>Huan Wang</div>
+      <div>Jaspreet Ishar</div>
+      <div>Keisha Matthew</div>
+      <div>Sara Sime</div>
+      <div>Sachi Krishna</div>
+      <div>Jack Nelson</div>
+      <div>Brad Tremblay</div>
+      <div>Tamara Aleksanyan</div>
+      <div>Gunjan Jetley</div>
+      <div>Ari Koplowitz</div>
+    </div>
+
+  </div> -->
 
 </section>
 
@@ -156,8 +207,6 @@
 <script type="module">
 
 import celldega from 'https://unpkg.com/celldega@0.4.5/src/celldega/static/widget.js?module';
-
-
 
   // Biological Motivation Code
   const width = 600;
@@ -329,8 +378,8 @@ celldega.landscape_ist(
 const base_url_skin = 'https://raw.githubusercontent.com/broadinstitute/celldega_Xenium_Prime_Human_Skin_FFPE_outs/main/Xenium_Prime_Human_Skin_FFPE_outs'
 
 ini_x = 20000
-ini_y = 15000
-ini_zoom = -5.5
+ini_y = 20000
+ini_zoom = -6.0
 
 const landscape_skin = await celldega.landscape_ist(
   d3.select("#celldega-skin").node(),

@@ -69,7 +69,7 @@
 
   <div class="container-normal-slide">
 
-    <div class="text-box-left">
+    <div class="narrow-text-box-left">
       <p>
         Single-cell transcriptomics reveals the <span class="gradient-text">high-dimensional gene expression space</span> that cells reside in
       </p>
@@ -81,6 +81,9 @@
 
     <div class="image-right">
       <!-- I want my images here one on top of the other -->
+
+      <img src="frink_high-dimensional-data.jpg" alt="First Image Description" style="width: 60%">
+      <img src="frink_spaital-data.jpg" alt="Second Image Description" style="width: 60%">
   </div>
 
 </section>
@@ -156,8 +159,8 @@ import celldega from 'https://unpkg.com/celldega@0.4.5/src/celldega/static/widge
 
 
 
-// Biological Motivation Code
-const width = 400;
+  // Biological Motivation Code
+  const width = 600;
   const height = 600;
 
   const svg = d3.select("#visualization")
@@ -173,18 +176,21 @@ const width = 400;
     return colors[Math.floor(Math.random() * colors.length)];
   }
 
+  const scale_up = 2.2
+  const x_offset = 150
+
   // 1. Cell: Single Dot (Start Point)
   svg.append("circle")
-    .attr("cx", 100)
-    .attr("cy", 100)
-    .attr("r", 5)
+    .attr("cx", 100 * scale_up - x_offset)
+    .attr("cy", 100 * scale_up)
+    .attr("r", 5 * scale_up)
     .attr("fill", randomColor());
 
   svg.append("text")
-    .attr("x", 100)
+    .attr("x", 100 * scale_up - x_offset)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-size", "20px")
+    .style("font-size", "30px")
     .style('font-family', "PT Serif")
     .text("Cell");
 
@@ -195,19 +201,21 @@ const width = 400;
     [180, 130], [170, 120], [160, 110], [150, 100]
   ];
 
+
+
   heartDots.forEach(d => {
     svg.append("circle")
-      .attr("cx", d[0])
-      .attr("cy", d[1])
-      .attr("r", 5)
+      .attr("cx", d[0] * scale_up - x_offset)
+      .attr("cy", d[1] * scale_up)
+      .attr("r", 5 * scale_up)
       .attr("fill", randomColor());
   });
 
   svg.append("text")
-    .attr("x", 180)
+    .attr("x", 180 * scale_up - x_offset)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-size", "20px")
+    .style("font-size", "30px")
     .style('font-family', "PT Serif")
     .text("Organ");
 
@@ -232,17 +240,17 @@ const width = 400;
 
   stickFigureDots.forEach(d => {
     svg.append("circle")
-      .attr("cx", d[0])
-      .attr("cy", d[1])
-      .attr("r", 5)
+      .attr("cx", d[0] * scale_up - x_offset)
+      .attr("cy", d[1]* scale_up)
+      .attr("r", 5 * scale_up)
       .attr("fill", randomColor());
   });
 
   svg.append("text")
-    .attr("x", 300)
+    .attr("x", 300 * scale_up - x_offset)
     .attr("y", 50)
     .attr("text-anchor", "middle")
-    .style("font-size", "20px")
+    .style("font-size", "30px")
     .style('font-family', "PT Serif")
     .text("Organism");
 

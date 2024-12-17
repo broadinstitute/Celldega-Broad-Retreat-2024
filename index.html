@@ -16,7 +16,7 @@
   <!-- <br
   <br> -->
   <!-- Spatial Analysis and Visualization Library -->
-  <div class="grey" id="sub-title" style="font-size: 75%; ; margin-top">
+  <div class="grey" id="sub-title" style="font-size: 75%; margin-top: 5em;">
     <div>Broad Retreat 2024</div>
     <div>Data Visualization Breakout Session</div>
     <div>Spatial Technology Platform</div>
@@ -39,7 +39,7 @@
 
     <div class="text-box-left">
       <p>
-        A cell is the fundamental unit of life
+        The cell is the fundamental unit of life
       </p>
       <dp>
         Cells differentiate and work together to form intricately organized:
@@ -150,10 +150,6 @@
 
 
 
-
-
-
-
 <script src="d3.v3.min.js"></script>
 <script src="stack.v1.min.js"></script>
 
@@ -161,6 +157,97 @@
 
 import celldega from 'https://unpkg.com/celldega@0.4.5/src/celldega/static/widget.js?module';
 
+
+
+// Biological Motivation Code
+const width = 400;
+  const height = 600;
+
+  const svg = d3.select("#visualization")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  // Color palette for different cell types
+  const colors = ["steelblue", "tomato", "orange", "purple", "green", "cyan"];
+
+  // Function to randomly pick a color
+  function randomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  // 1. Cell: Single Dot (Start Point)
+  svg.append("circle")
+    .attr("cx", 100)
+    .attr("cy", 100)
+    .attr("r", 5)
+    .attr("fill", randomColor());
+
+  svg.append("text")
+    .attr("x", 100)
+    .attr("y", 50)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style('font-family', "PT Serif")
+    .text("Cell");
+
+  // 2. Organ: Heart Shape Made of Mixed Color Dots
+  const heartDots = [
+    [150, 90], [160, 80], [170, 80], [180, 90], [190, 80],
+    [200, 80], [210, 90], [210, 100], [200, 110], [190, 120],
+    [180, 130], [170, 120], [160, 110], [150, 100]
+  ];
+
+  heartDots.forEach(d => {
+    svg.append("circle")
+      .attr("cx", d[0])
+      .attr("cy", d[1])
+      .attr("r", 5)
+      .attr("fill", randomColor());
+  });
+
+  svg.append("text")
+    .attr("x", 180)
+    .attr("y", 50)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style('font-family', "PT Serif")
+    .text("Organ");
+
+  const stickFigureDots = [
+    // Head outline (circular, larger spacing)
+    [300, 70], [292, 72], [308, 72], [290, 77], [310, 77],
+    [288, 82], [312, 82], [292, 87], [308, 87],
+
+    // Neck and body
+    [300, 95], [300, 115], [300, 135], [300, 155],
+
+    // Arms with joints (spaced out further horizontally)
+    [280, 115], [320, 115], // Shoulders
+    [265, 130], [335, 130], // Elbows
+    [250, 145], [350, 145], // Hands
+
+    // Legs with joints (spaced out further vertically)
+    [285, 155], [315, 155], // Hips
+    [275, 180], [325, 180], // Knees
+    [265, 205], [335, 205]  // Feet
+  ];
+
+  stickFigureDots.forEach(d => {
+    svg.append("circle")
+      .attr("cx", d[0])
+      .attr("cy", d[1])
+      .attr("r", 5)
+      .attr("fill", randomColor());
+  });
+
+  svg.append("text")
+    .attr("x", 300)
+    .attr("y", 50)
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style('font-family', "PT Serif")
+    .text("Organism");
 
 var mystack = stack()
   .on("activate", activate)
@@ -283,139 +370,6 @@ celldega.matrix_viz(
 );
 
 
-   // Set up the SVG canvas dimensions
-   const width = 400;
-    const height = 600;
 
-    const svg = d3.select("#visualization")
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height);
-
-    // Color palette for different cell types
-    const colors = ["steelblue", "tomato", "orange", "purple", "green", "cyan"];
-
-    // Function to randomly pick a color
-    function randomColor() {
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    // 1. Cell: Single Dot (Start Point)
-    svg.append("circle")
-      .attr("cx", 100)
-      .attr("cy", 100)
-      .attr("r", 10)
-      .attr("fill", randomColor());
-
-    svg.append("text")
-      .attr("x", 100)
-      .attr("y", 130)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .text("Cell");
-
-    // 2. Organ: Heart Shape Made of Mixed Color Dots
-    const heartDots = [
-      [150, 90], [160, 80], [170, 80], [180, 90], [190, 80],
-      [200, 80], [210, 90], [210, 100], [200, 110], [190, 120],
-      [180, 130], [170, 120], [160, 110], [150, 100]
-    ];
-
-    heartDots.forEach(d => {
-      svg.append("circle")
-        .attr("cx", d[0])
-        .attr("cy", d[1])
-        .attr("r", 5)
-        .attr("fill", randomColor());
-    });
-
-    svg.append("text")
-      .attr("x", 180)
-      .attr("y", 150)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .text("Organ");
-
-    // // 3. Organism: Stick Figure Made of Mixed Color Dots
-    // const stickFigureDots = [
-    //   // [300, 80],
-    //   [300, 95],
-    //   [300, 110],
-    //   [300, 125],
-    //   // Body (Vertical Line)
-    //   [285, 110], [315, 110], // Arms
-    //   [285, 140], [315, 140], // Legs
-    //   // [300, 70] // Head
-    // ];
-
-//     const stickFigureDots = [
-//   // Head outline (circular)
-//   [300, 70], [295, 72], [305, 72], [293, 77], [307, 77],
-//   [292, 82], [308, 82], [295, 87], [305, 87],
-
-//   // Neck and body
-//   [300, 95], [300, 110], [300, 125], [300, 140],
-
-//   // Arms with joints
-//   [285, 110], [315, 110], // Shoulders
-//   [275, 120], [325, 120], // Elbows
-//   [265, 130], [335, 130], // Hands
-
-//   // Legs with joints
-//   [285, 140], [315, 140], // Hips
-//   [280, 160], [320, 160], // Knees
-//   [270, 180], [330, 180]  // Feet
-// ];
-
-const stickFigureDots = [
-  // Head outline (circular, larger spacing)
-  [300, 70], [292, 72], [308, 72], [290, 77], [310, 77],
-  [288, 82], [312, 82], [292, 87], [308, 87],
-
-  // Neck and body
-  [300, 95], [300, 115], [300, 135], [300, 155],
-
-  // Arms with joints (spaced out further horizontally)
-  [280, 115], [320, 115], // Shoulders
-  [265, 130], [335, 130], // Elbows
-  [250, 145], [350, 145], // Hands
-
-  // Legs with joints (spaced out further vertically)
-  [285, 155], [315, 155], // Hips
-  [275, 180], [325, 180], // Knees
-  [265, 205], [335, 205]  // Feet
-];
-
-
-//     const stickFigureDots = [
-//   [300, 70],   // Head (center point)
-
-//   // Eyes
-//   [290, 60],   // Left eye
-//   [310, 60],   // Right eye
-
-//   // Smile (arc of dots)
-//   [285, 75],   // Left corner of smile
-//   [290, 80],   // Left-mid smile
-//   [300, 82],   // Bottom center of smile
-//   [310, 80],   // Right-mid smile
-//   [315, 75]    // Right corner of smile
-// ];
-
-
-    stickFigureDots.forEach(d => {
-      svg.append("circle")
-        .attr("cx", d[0])
-        .attr("cy", d[1])
-        .attr("r", 5)
-        .attr("fill", randomColor());
-    });
-
-    svg.append("text")
-      .attr("x", 300)
-      .attr("y", 160)
-      .attr("text-anchor", "middle")
-      .style("font-size", "12px")
-      .text("Organism");
 
 </script>

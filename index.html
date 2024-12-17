@@ -28,7 +28,41 @@
   <!-- <p class="grey">Scroll down to see more.</p> -->
 </section>
 
-<!-- 2. Spatial Transcriptomics -->
+<!-- 2. Biological Motivation -->
+<section class='main_section'>
+
+  <p style="text-align:center;padding-top:0.25em;">
+    Motivation
+  </p>
+
+  <div class="container-normal-slide">
+
+    <div class="text-box-left">
+      <p>
+        A cell is the fundamental unit of life
+      </p>
+      <dp>
+        Cells differentiate and work together to form intricately organized:
+      </p>
+      <ul>
+        <li>tissues</li>
+        <li>organs</li>
+        <li>organisms</li>
+      </ul>
+      <p class="gradient-text">
+        Enabled by the careful regulation of transcriptional programs
+      </p>
+    </div>
+
+    <div class="image-right">
+      <!-- something -->
+      <div id="visualization"
+    </div>
+  </div>
+
+</section>
+
+<!-- 3. Data Visualization -->
 <section class='main_section'>
 
   <p style="text-align:center;padding-top:0.25em;">
@@ -37,7 +71,7 @@
 
   <div class="text-box-left">
     <p>
-      A cell is the fundamental unit of life
+      Data Visualization
     </p>
     <dp>
       Cells differentiate and work together to form intricately organized:
@@ -51,8 +85,6 @@
       Enabled by the careful regulation of transcriptional programs
     </p>
   </div>
-
-
 
 </section>
 
@@ -250,5 +282,81 @@ celldega.matrix_viz(
   landscape_skin.update_matrix_dendro_col
 );
 
+
+   // Set up the SVG canvas dimensions
+   const width = 600;
+    const height = 200;
+
+    const svg = d3.select("#visualization")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    // Color palette for different cell types
+    const colors = ["steelblue", "tomato", "orange", "purple", "green", "cyan"];
+
+    // Function to randomly pick a color
+    function randomColor() {
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // 1. Cell: Single Dot (Start Point)
+    svg.append("circle")
+      .attr("cx", 100)
+      .attr("cy", 100)
+      .attr("r", 10)
+      .attr("fill", randomColor());
+
+    svg.append("text")
+      .attr("x", 100)
+      .attr("y", 130)
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .text("Cell");
+
+    // 2. Organ: Heart Shape Made of Mixed Color Dots
+    const heartDots = [
+      [150, 90], [160, 80], [170, 80], [180, 90], [190, 80],
+      [200, 80], [210, 90], [210, 100], [200, 110], [190, 120],
+      [180, 130], [170, 120], [160, 110], [150, 100]
+    ];
+
+    heartDots.forEach(d => {
+      svg.append("circle")
+        .attr("cx", d[0])
+        .attr("cy", d[1])
+        .attr("r", 5)
+        .attr("fill", randomColor());
+    });
+
+    svg.append("text")
+      .attr("x", 180)
+      .attr("y", 150)
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .text("Organ");
+
+    // 3. Organism: Stick Figure Made of Mixed Color Dots
+    const stickFigureDots = [
+      [300, 80], [300, 95], [300, 110], [300, 125], // Body (Vertical Line)
+      [290, 110], [310, 110], // Arms
+      [290, 140], [310, 140], // Legs
+      [300, 70] // Head
+    ];
+
+    stickFigureDots.forEach(d => {
+      svg.append("circle")
+        .attr("cx", d[0])
+        .attr("cy", d[1])
+        .attr("r", 5)
+        .attr("fill", randomColor());
+    });
+
+    svg.append("text")
+      .attr("x", 300)
+      .attr("y", 160)
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+      .text("Organism");
 
 </script>
